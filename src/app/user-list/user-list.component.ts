@@ -9,16 +9,14 @@ import { User } from '../models/user.model';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent {
-
+export class UserListComponent implements OnInit {
   users: User[] = [];
 
-  constructor(private userService : UserService){
-
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.users = this.userService.getUser()
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
+    });
   }
-
 }
