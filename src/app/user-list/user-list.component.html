@@ -1,9 +1,26 @@
-<div class="user-list">
-  <h2>Liste des utilisateurs</h2>
-  <ul>
-    <li *ngFor="let user of users">
-      <strong>{{ user.name }}</strong>
-      <span>{{ user.email }}</span>
-    </li>
-  </ul>
+<div class="container">
+  <div class="form-container">
+    <h2>Ajouter un utilisateur</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+      <div class="form-group">
+        <label for="name">Nom :</label>
+        <input id="name" formControlName="name" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input id="email" formControlName="email" type="email" required>
+      </div>
+      <button type="submit">Ajouter Utilisateur</button>
+    </form>
+  </div>
+
+  <div class="user-list">
+    <h2>Liste des utilisateurs</h2>
+    <ul>
+      <li *ngFor="let user of users">
+        <strong>{{ user.name }}</strong>
+        <span>{{ user.email }}</span>
+      </li>
+    </ul>
+  </div>
 </div>
